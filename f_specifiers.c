@@ -2,7 +2,7 @@
 
 /**
  * print_char - Function to print character
- * @arg_list: 
+ * @arg_list: list of arguments
  * Return: Will return the amount of characters printed.
  */
 int print_char(va_list arg_list)
