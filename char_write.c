@@ -5,7 +5,7 @@
  * @ch: variable for character to be printed
  *
  * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * On error, -1 is returned, and error is set appropriately.
  */
 int char_write(char ch)
 {

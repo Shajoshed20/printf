@@ -7,12 +7,12 @@
  */
 int print_char(va_list list)
 {
-	_write_char(va_arg(list, int));
+	char_write(va_arg(list, int));
 	return (1);
 }
 
 /**
- * print_string - Prints a string
+ * print_string - Function to print string
  * @list: list of arguments
  * Return: Will return the amount of characters printed.
  */
@@ -25,7 +25,7 @@ int print_string(va_list list)
 	if (str == NULL)
 		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
-		_write_char(str[i]);
+		char_write(str[i]);
 	return (i);
 }
 
@@ -36,7 +36,7 @@ int print_string(va_list list)
  */
 int print_percent(__attribute__((unused))va_list list)
 {
-	_write_char('%');
+	char_write('%');
 	return (1);
 }
 
