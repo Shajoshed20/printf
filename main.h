@@ -5,14 +5,34 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+/**
+* struct convert - user-defined type for operator and functions
+*
+* @op: variable for operator
+* @f: The function associated
+*/
 struct convert
 {
-	char *sym;
+	char *op;
 	int (*f)(va_list);
 };
-typedef struct convert conver_t;
+typedef struct convert change;
 
 /* Main functions*/
 int _printf(const char *format, ...);
+int parser(const char *format, change f_list[], va_list arg_list);
+int char_write(char);
+int print_char(va_list);
+int print_string(va_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_number(va_list);
+int print_binary(va_list);
+int print_reversed(va_list arg);
+int rot13(va_list);
+int unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_heX(va_list list);
 
 #endif
