@@ -1,10 +1,11 @@
 #include "main.h"
 
 void print_buffer(char buffer[], int *buff_ind);
+
 /**
- * print_buffer - Function to print content
- * @buffer: variable to temporoary stor character
- * @buff_ind: variable for buffer index
+ * print_buffer - Prints the contents of the buffer if it exist
+ * @buffer: Array of chars
+ * @buff_ind: Index at which to add next char, represents the length.
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
@@ -15,9 +16,9 @@ void print_buffer(char buffer[], int *buff_ind)
 }
 
 /**
- * _printf - Function for printf
- * @format: variable for format
- * Return: integer type
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars.
  */
 int _printf(const char *format, ...)
 {
@@ -49,7 +50,7 @@ int _printf(const char *format, ...)
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
 			++i;
-			printed = funct_print(format, &i, list, buffer,
+			printed = handle_print(format, &i, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
