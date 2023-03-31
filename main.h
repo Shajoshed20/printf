@@ -44,9 +44,6 @@ int _printf(const char *format, ...);
 int funct_print(const char *format, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
-/*print buffer*/
-void print_buffer(char buffer[], int *buff_ind);
-
 /* Function for address */
 int print_ptr(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
