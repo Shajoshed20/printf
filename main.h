@@ -8,16 +8,16 @@
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
 
-/* Constant sizes */
-#define S_LONG 2
-#define S_SHORT 1
-
 /* Constant flags */
 #define F_MINUS 1
 #define F_PLUS 2
 #define F_ZERO 4
 #define F_HASH 8
 #define F_SPACE 16
+
+/* Constant sizes */
+#define S_LONG 2
+#define S_SHORT 1
 
 /**
  * struct format - user defined format
@@ -41,11 +41,14 @@ struct format
 typedef struct format format_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *format, int *i,
+int funct_print(const char *format, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
+/*print buffer*/
+void print_buffer(char buffer[], int *buff_ind);
+
 /* Function for address */
-int print_pointer(va_list types, char buffer[],
+int print_ptr(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /*Function to display reverse order*/
@@ -57,16 +60,16 @@ int print_int(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int print_binary(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_unsigned(va_list types, char buffer[],
+int print_unsign(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_octal(va_list types, char buffer[],
+int print_oct(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexadecimal(va_list types, char buffer[],
+int print_hexadec(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexa_upper(va_list types, char buffer[],
+int print_hexa_up(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-int print_hexa(va_list types, char map_to[],
+int print_hexa_lu(va_list types, char map_to[],
 char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
 /* Functions for strings and characters */
@@ -78,14 +81,14 @@ int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /*Function of rot13*/
-int print_rot13string(va_list types, char buffer[],
+int print_rot13(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Function for variable that are not printable */
-int print_non_printable(va_list types, char buffer[],
+int non_printable(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-/* Functions for other types */
+/* Functions for other types of lags */
 int get_flags(const char *format, int *i);
 int get_width(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
@@ -98,7 +101,7 @@ int write_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
 int write_num(int ind, char bff[], int flags, int width, int precision,
 	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
+int write_ptr(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 
 int write_unsgnd(int is_negative, int ind,
