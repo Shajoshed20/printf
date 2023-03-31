@@ -41,7 +41,7 @@ struct format
 typedef struct format format_t;
 
 int _printf(const char *format, ...);
-int funct_print(const char *format, int *i,
+int funct_print(const char *fmt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /* Function for address */

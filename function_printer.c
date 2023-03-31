@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * funct_print - Function for typr argument
- * @format: Variable for format for string
+ * @fmt: Variable for format for string
  * @list: Variable for argument list
  * @ind: variable for ..
  * @buffer: varibale for buffer
@@ -11,7 +11,7 @@
  * @size: variable for size
  * Return: integer type
  */
-int funct_print(const char *format, int *ind, va_list list, char buffer[],
+int funct_print(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i, unknow_len = 0, printed_chars = -1;
@@ -28,27 +28,27 @@ int funct_print(const char *format, int *ind, va_list list, char buffer[],
 		{'R', print_rot13},
 		{'\0', NULL}
 	};
-	for (i = 0; format_types[i].format != '\0'; i++)
-		if (format[*ind] == format_types[i].format)
+	for (i = 0; format_types[i].fmt != '\0'; i++)
+		if (fmt[*ind] == format_types[i].fmt)
 			return (format_types[i].fn(list, buffer, flags, width, precision, size));
 
-	if (format_types[i].format == '\0')
+	if (format_types[i].fmt == '\0')
 	{
-		if (format[*ind] == '\0')
+		if (fmt[*ind] == '\0')
 			return (-1);
 		unknow_len += write(1, "%%", 1);
-		if (format[*ind - 1] == ' ')
+		if (fmt[*ind - 1] == ' ')
 			unknow_len += write(1, " ", 1);
 		else if (width)
 		{
 			--(*ind);
-			while (format[*ind] != ' ' && format[*ind] != '%')
+			while (fmt[*ind] != ' ' && fmt[*ind] != '%')
 				--(*ind);
-			if (format[*ind] == ' ')
+			if (fmt[*ind] == ' ')
 				--(*ind);
 			return (1);
 		}
-		unknow_len += write(1, &format[*ind], 1);
+		unknow_len += write(1, &fmt[*ind], 1);
 		return (unknow_len);
 	}
 	return (printed_chars);
